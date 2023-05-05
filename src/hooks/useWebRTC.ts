@@ -131,16 +131,16 @@ export default function useWebRTC(roomID: string){
         }
 
         startCapture()
-            .then(() => socket.emit(ACTIONS.JOIN, { room: roomID}))
+            .then(() => socket.emit(ACTIONS.JOIN_ROOM, { room: roomID}))
             .catch(e => console.error('Error getting user media ', e))
 
         return() => {
             localMediaStream.current.getTracks().forEach((track: MediaStreamTrack) => track.stop())
-            socket.emit(ACTIONS.LEAVE)
+            socket.emit(ACTIONS.LEAVE_ROOM)
         }
     }, [roomID])
 
-    const provideMediaRef = useCallback((id: string, node: HTMLVideoElement | nulln) => {
+    const provideMediaRef = useCallback((id: string, node: HTMLVideoElement | null) => {
         peerMediaElements.current[id] = node
     }, [])
 

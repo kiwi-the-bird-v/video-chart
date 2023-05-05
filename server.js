@@ -22,7 +22,7 @@ function shareRoomsInfo(){
 io.on('connection', (socket) => {
     shareRoomsInfo()
     console.log('socket')
-    socket.on(ACTIONS.JOIN, config => {
+    socket.on(ACTIONS.JOIN_ROOM, config => {
         const {room: roomID} = config
         const {rooms: joinedRooms} = socket
 
@@ -70,7 +70,7 @@ io.on('connection', (socket) => {
         shareRoomsInfo()
     }
 
-    socket.on(ACTIONS.LEAVE, leaveRoom)
+    socket.on(ACTIONS.LEAVE_ROOM, leaveRoom)
     socket.on('disconnecting', leaveRoom)
     socket.on(ACTIONS.RELAY_SDP, ({peerID, sessionDescription}) => {
         io.to(peerID).emit(ACTIONS.SESSION_DESCRIPTION, {

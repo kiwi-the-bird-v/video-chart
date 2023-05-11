@@ -1,0 +1,15 @@
+.my__button {
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.my__button.primary {
+    background-color: royalblue;
+    color: white;
+}
+
+.my__button.secondary {
+    background-color: gainsboro;
+    color: black;
+}

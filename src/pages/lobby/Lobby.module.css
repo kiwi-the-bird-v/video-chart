@@ -1,0 +1,33 @@
+.lobby {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('../../assets/images/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+
+.lobby_content {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+    width: 500px;
+    min-height: 300px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 5px;
+    padding: 15px 20px;
+}
+
+.lobby_header {
+    color: azure;
+}
+
+.lobby_room {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: azure;
+}

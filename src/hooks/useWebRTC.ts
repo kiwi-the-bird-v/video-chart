@@ -87,7 +87,7 @@ export default function useWebRTC(roomID: string){
             }
         }
         socket.on(ACTIONS.SESSION_DESCRIPTION, setRemoteMedia)
-    })
+    }, [])
 
     useEffect(() => {
         socket.on(ACTIONS.ICE_CANDIDATE, ({peerID, iceCandidate}: {peerID: string, iceCandidate: RTCIceCandidate}) => {
@@ -107,8 +107,10 @@ export default function useWebRTC(roomID: string){
 
             setClients((list:Array<typeof clients>) => list.filter((client: typeof clients) => client !== peerID))
         }
-        socket.on(ACTIONS.REMOVE_PEER, handleRemovePeer)
-    }, [])
+        return() => {
+            socket.on(ACTIONS.REMOVE_PEER, handleRemovePeer)
+        }
+    })
 
     useEffect(() => {
         async function startCapture() {

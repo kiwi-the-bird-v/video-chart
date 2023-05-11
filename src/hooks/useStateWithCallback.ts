@@ -2,11 +2,10 @@ import {useState, useRef, useCallback, useEffect} from "react";
 
 export default function useStateWithCallback(initialState: any){
     const [state, setState] = useState(initialState)
-    const callbackRef = useRef() as any
+    const callbackRef = useRef(null) as any
 
     const updateState = useCallback((newState: any, callback: () => any) => {
         callbackRef.current = callback
-
         setState((prev: any) => typeof newState === 'function' ? newState(prev) : newState)
     }, [])
 
